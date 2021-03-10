@@ -1,46 +1,32 @@
 const express = require("express");
 
 const app = express();
+const appRoutes = require("./routes/approute");
+const userRoutes = require("./routes/userroute");
+const adminRoutes = require("./routes/adminroute");
 
 // body parser
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 
-const port = 3000;
-const userForm = `<form action="/user" method="POST">
-<input type="text" name="username" placeholder="enter name" value="mario"/>
-<button type="submit">Submit</button>
-</form>`;
+// routing
 
-// handle all paths
-// app.use((req, res, next) => {
-//   console.log("listen all requests");
-//   res.send(`<h1 style="color:red">we are going to know</h1>`);
-// });
-// app.use((req, res, next) => {
-//   console.log(`user routes`);
-//   next();
+// user routing
+app.use(userRoutes);
 
-//   //   res.send(`user route`);
-// });
-// app.use((req, res, next) => {
-//   // next used to get next passes control to next routes
-//   res.send(`<div>/ route</div>`);
-// });
+app.use(appRoutes);
 
-app.get("/", (req, res) => {
-  res.send(userForm);
-});
-app.post("/user", (req, res) => {
-  // req.body body added new field for parsing
-  console.log(req.body.username);
-  res.redirect("/");
-});
+// admin routes
+app.use("/admin", adminRoutes);
+
+// 404 page
 
 app.use((req, res) => {
-  res.send("there is no matching routes");
+  res.send(`<div>not found 404</div>`);
 });
+
+const port = 3000;
 
 app.listen(port, () => {
   console.log("====================================");
