@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>index file</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <nav class="base-nav">
+      <a class="link" href="/">Home</a>
+      <a class="link" href="/users">Users</a>
+      <a class="link" href="/adduser">AddUser</a>
+      <a class="link" href="/about">About</a>
+    </nav>
+    <main>
+      <div>Home page</div>
+      <form action="/users" method="post">
+        <input
+          type="text"
+          name="username"
+          placeholder="enter name"
+          value="mario"
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </main>
+    <style></style>
+  </body>
+</html>

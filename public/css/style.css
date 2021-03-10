@@ -1,0 +1,20 @@
+.base-nav {
+  display: flex;
+  justify-content: space-between;
+  background: #caec09;
+  padding: 2em;
+}
+.link {
+  color: blue;
+  padding: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.link:hover {
+  color: white;
+  background: #000;
+
+  text-decoration: none;
+  cursor: pointer;
+}

@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 
 const app = express();
 const appRoutes = require("./routes/approute");
@@ -9,6 +10,9 @@ const adminRoutes = require("./routes/adminroute");
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+// serve file statically
+app.use(express.static(path.join(__dirname, "public")));
 
 // routing
 
@@ -23,7 +27,7 @@ app.use("/admin", adminRoutes);
 // 404 page
 
 app.use((req, res) => {
-  res.send(`<div>not found 404</div>`);
+  res.sendFile(path.join(__dirname, "views", "404.html"));
 });
 
 const port = 3000;

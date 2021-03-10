@@ -1,20 +1,19 @@
 const express = require("express");
+const path = require("path");
 
+const rootDir = require("../util/path");
 const router = express.Router();
 
-const userList = `<ul>
-<li>User List</li>
-<li>User 1</li>
-<li>User 2</li>
-<li>User 3</li>
-<li>User 4</li>
-</ul>`;
-router.get("/user", (req, res) => {
-  res.send(userList);
+router.get("/users", (req, res) => {
+  res.sendFile(path.join(rootDir, "views", "users.html"));
 });
 
-router.post("/user", (req, res, next) => {
+router.post("/users", (req, res, next) => {
   console.log(req.body);
+  res.redirect("/");
+});
+
+router.get("/adduser", (req, res, next) => {
   res.redirect("/");
 });
 
